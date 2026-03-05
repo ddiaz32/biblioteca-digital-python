@@ -11,6 +11,14 @@ class Libro:
     """Entidad que representa un libro en el catálogo."""
 
     def __init__(self, id_libro: str, titulo: str, autor: str, anio: int, genero: str) -> None:
+
+        self.id_libro = id_libro
+        self.titulo = titulo
+        self.autor = autor
+        self.anio = anio
+        self.genero = genero
+        self.prestado = False
+
         """
         Inicializa un nuevo libro.
 
@@ -27,6 +35,8 @@ class Libro:
         pass  # TODO: Implementar
 
     def __str__(self) -> str:
+
+
         """
         Devuelve una representación en texto del libro.
 
