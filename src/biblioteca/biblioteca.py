@@ -48,6 +48,17 @@ class Biblioteca:
     # =========================================================================
 
     def registrar_libro(self, libro: Libro) -> None:
+        if libro.id_libro in self.catalogo:
+            raise ValueError("El id_libro ya existe.")
+        
+        self.catalogo[libro.id_libro] = libro
+        self.indice_por_autor.setdefault(libro.autor, []).append(libro.id_libro)
+        self.indice_por_genero.setdefault(libro.genero, []).append(libro.id_libro)
+
+    
+
+    
+
         """
         Registra un libro en el catálogo.
 
@@ -71,6 +82,13 @@ class Biblioteca:
         pass  # TODO: Implementar
 
     def registrar_usuario(self, usuario: Usuario) -> None:
+        if usuario in self.usuarios:
+            print("El id_usuario ya existe.")
+
+        else:
+
+
+
         """
         Registra un usuario en el sistema.
 
