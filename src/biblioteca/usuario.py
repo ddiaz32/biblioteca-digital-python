@@ -12,6 +12,11 @@ class Usuario:
     """Representa a una persona que puede solicitar préstamos en la biblioteca."""
 
     def __init__(self, id_usuario: str, nombre: str, limite_prestamos: int = 3) -> None:
+        self.id_usuario = id_usuario
+        self.nombre = nombre
+        self.limite_prestamos = limite_prestamos
+        self.prestamos = []
+
         """
         Inicializa un nuevo usuario.
 
@@ -27,7 +32,16 @@ class Usuario:
         pass  # TODO: Implementar
 
     def puede_prestar(self) -> bool:
-        """
+       prestamos_activos = [
+            prestamo for prestamo in self.prestamos
+            if prestamo.fecha_devolucion is None
+       ]
+
+       return len(prestamos_activos) < self.limite_prestamos
+    
+    
+
+    """
         Verifica si el usuario puede solicitar un nuevo préstamo.
 
         TODO: Contar cuántos préstamos activos tiene el usuario.
@@ -39,9 +53,19 @@ class Usuario:
         Returns:
             True si el usuario puede pedir más libros, False si ya alcanzó el límite.
         """
-        pass  # TODO: Implementar
+    pass  # TODO: Implementar
 
     def __str__(self) -> str:
+        
+        prestamos_activos = [
+           prestamo for prestamo in self.prestamos
+           if prestamo.fecha_devolucion is None
+        ]
+
+        c = len(prestamos_activos)
+
+        return f"{self.id_usuario} - {self.nombre} - prestamos activos: {c}"
+    
         """
         Devuelve una representación en texto del usuario.
 
@@ -54,3 +78,8 @@ class Usuario:
         "U001 - Ana · préstamos activos: 2"
         """
         pass  # TODO: Implementar
+
+
+usuario = Usuario("A001", "David")
+
+print(usuario)
